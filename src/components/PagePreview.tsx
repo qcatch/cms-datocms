@@ -1,9 +1,10 @@
 "use client";
-import { useQuerySubscription } from "react-datocms";
+import { StructuredText, useQuerySubscription } from "react-datocms";
 import Hero from "@/components/Hero";
 import PriceCardBlock from "@/components/PriceCardBlock";
 import FAQBlock from "@/components/FAQBlock";
 import TextImage from "@/components/TextImage";
+import React from "react";
 
 export function RealtimePage({ subscription }) {
   const { data, error, status } = useQuerySubscription(subscription);
@@ -21,6 +22,9 @@ export function RealtimePage({ subscription }) {
             return <TextImage key={item.key} {...item} />;
           case "HeroRecord":
             return <Hero key={item.key} {...item} />;
+          case "RichtextBlockRecord":
+            return <StructuredText data={item?.content?.value} />;
+
           default:
             return null;
         }

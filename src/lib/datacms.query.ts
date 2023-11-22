@@ -64,8 +64,6 @@ export const PAGE_QUERY = `query Page($slug: String) {
       ... on TextimageRecord {
         __typename
         content {
-          blocks
-          links
           value
         }
         id
@@ -79,6 +77,13 @@ export const PAGE_QUERY = `query Page($slug: String) {
             title
             base64
           }
+        }
+      }
+      ... on RichtextBlockRecord {
+        __typename
+        id
+        content {
+          value
         }
       }
     }

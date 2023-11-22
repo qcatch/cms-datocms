@@ -8,6 +8,8 @@ import PriceCardBlock from "@/components/PriceCardBlock";
 import { metadata } from "@/app/layout";
 import { RealtimePage } from "@/components/PagePreview";
 import Hero from "@/components/Hero";
+import React from "react";
+import { StructuredText } from "react-datocms";
 
 export async function generateMetadata({ params }: AppRouteProps) {
   const { isEnabled } = draftMode();
@@ -61,6 +63,8 @@ export default async function Page({ params }: AppRouteProps) {
               return <TextImage key={item.key} {...item} />;
             case "HeroRecord":
               return <Hero key={item.key} {...item} />;
+            case "RichtextBlockRecord":
+              return <StructuredText data={item?.content?.value} />;
             default:
               return null;
           }
