@@ -2,31 +2,53 @@ import { performRequest } from "@/lib/datacms";
 import { draftMode } from "next/headers";
 import { RealtimeHome } from "@/components/HomePreview";
 import Hero from "@/components/Hero";
+import PriceCardBlock from "@/components/PriceCardBlock";
+import FAQBlock from "@/components/FAQBlock";
+import TextImage from "@/components/TextImage";
+import { StructuredText } from "react-datocms";
+import React from "react";
 
-const PAGE_CONTENT_QUERY = `
-  query Home {
-    home {
-      title
-      homehero {
-        title
+const PAGE_CONTENT_QUERY = `query Home {
+  home {
+    content {
+      ... on HeroRecord {
+      _modelApiKey
+        id
+        _createdAt
         image {
-          responsiveImage(imgixParams: { fit: crop, w: 600, h: 600 }) {
-            sizes
-            src
+          responsiveImage(imgixParams: { fit: crop, w: 1200, h: 1200 }) {
             width
-            height
-            alt
+            webpSrcSet
+            srcSet
+            src
             title
+            sizes
+            height
+            bgColor
             base64
+            aspectRatio
+            alt
           }
+          title
         }
         buttons {
           title
           link
         }
+        title
+      }
+      ... on RichtextBlockRecord {
+      _modelApiKey
+        id
+        content {
+          value
+        }
       }
     }
-  }`;
+    title
+    id
+  }
+}`;
 
 function getPageRequest({ includeDrafts }) {
   return { query: PAGE_CONTENT_QUERY, includeDrafts };
@@ -37,7 +59,7 @@ export default async function Home() {
 
   const pageRequest = getPageRequest({ includeDrafts: isEnabled });
   const data = await performRequest(pageRequest);
-
+  console.log(data);
   return isEnabled ? (
     <>
       <RealtimeHome
@@ -51,15 +73,22 @@ export default async function Home() {
     </>
   ) : (
     <>
-      <div className="space-y-20">
-        {data?.home?.homehero?.map((hero) => (
-          <Hero
-            key={hero.title}
-            title={hero.title}
-            buttons={hero.buttons}
-            image={hero.image}
-          />
-        ))}
+      <div className="container my-24 mx-auto md:px-6">
+        {data.home?.content?.map((item) => {
+          // console.log(item.__typename);
+          switch (item._modelApiKey) {
+            case "hero":
+              return <Hero key={item.key} {...item} />;
+            case "richtext_block":
+              return (
+                <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left">
+                  <StructuredText data={item?.content?.value} />
+                </div>
+              );
+            default:
+              return null;
+          }
+        })}
       </div>
     </>
   );

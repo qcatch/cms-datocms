@@ -1,20 +1,28 @@
 "use client";
-import { useQuerySubscription } from "react-datocms";
+import { StructuredText, useQuerySubscription } from "react-datocms";
 import Hero from "@/components/Hero";
+import React from "react";
 
 export function RealtimeHome({ subscription }) {
   const { data, error, status } = useQuerySubscription(subscription);
-  // console.log(data, error, status);
+  console.log(data, error, status);
   return (
     <div className="space-y-20">
-      {data?.home?.homehero?.map((hero) => (
-        <Hero
-          key={hero.title}
-          title={hero.title}
-          buttons={hero.buttons}
-          image={hero.image}
-        />
-      ))}
+      {data.home?.content?.map((item) => {
+        // console.log(item.__typename);
+        switch (item._modelApiKey) {
+          case "hero":
+            return <Hero key={item.key} {...item} />;
+          case "richtext_block":
+            return (
+              <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left">
+                <StructuredText data={item?.content?.value} />
+              </div>
+            );
+          default:
+            return null;
+        }
+      })}
     </div>
   );
 }

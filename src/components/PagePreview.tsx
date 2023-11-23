@@ -23,7 +23,11 @@ export function RealtimePage({ subscription }) {
           case "HeroRecord":
             return <Hero key={item.key} {...item} />;
           case "RichtextBlockRecord":
-            return <StructuredText data={item?.content?.value} />;
+            return (
+              <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left">
+                <StructuredText data={item?.content?.value} />
+              </div>
+            );
 
           default:
             return null;
