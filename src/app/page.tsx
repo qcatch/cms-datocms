@@ -73,7 +73,7 @@ export default async function Home() {
     </>
   ) : (
     <>
-      <div className="container my-24 mx-auto md:px-6">
+      <div className="space-y-20">
         {data.home?.content?.map((item) => {
           // console.log(item.__typename);
           switch (item._modelApiKey) {
@@ -81,7 +81,7 @@ export default async function Home() {
               return <Hero key={item.key} {...item} />;
             case "richtext_block":
               return (
-                <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left">
+                <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left my-10">
                   <StructuredText data={item?.content?.value} />
                 </div>
               );

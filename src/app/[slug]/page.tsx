@@ -65,7 +65,7 @@ export default async function Page({ params }: AppRouteProps) {
               return <Hero key={item.key} {...item} />;
             case "RichtextBlockRecord":
               return (
-                <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left">
+                <div className="bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left my-10">
                   <StructuredText data={item?.content?.value} />
                 </div>
               );
