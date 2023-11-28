@@ -15,7 +15,7 @@ export function RealtimeHome({ subscription }: { subscription: any }) {
             return <Hero key={item.key} {...item} />;
           case "richtext_block":
             return (
-              <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center dark:bg-neutral-900 md:px-12 lg:text-left my-10">
+              <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
                 <StructuredText data={item?.content?.value} />
               </div>
             );
