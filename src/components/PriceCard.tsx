@@ -15,7 +15,7 @@ const TickIcon = () => (
     viewBox="0 0 24 24"
     strokeWidth="2"
     stroke="currentColor"
-    className="mr-3 h-5 w-5 text-primary dark:text-primary-400"
+    className="mr-3 h-5 w-5 text-primary "
   >
     <path
       strokeLinecap="round"
@@ -32,16 +32,14 @@ const PriceCard: React.FC<PriceCardProps> = ({
   options,
 }) => {
   return (
-    <div className="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-      <div className="border-b-2 border-neutral-100 border-opacity-100 p-6 text-center dark:border-opacity-10">
+    <div className="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+      <div className="border-b-2 border-neutral-100 border-opacity-100 p-6 text-center">
         <p className="mb-4 text-sm uppercase">
           <strong>{title}</strong>
         </p>
         <h3 className="mb-6 text-3xl">
           <strong>${price}</strong>
-          <small className="text-base text-neutral-500 dark:text-neutral-300">
-            /{term}
-          </small>
+          <small className="text-base text-neutral-500">/{term}</small>
         </h3>
         <button
           type="button"
