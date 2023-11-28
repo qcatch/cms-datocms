@@ -66,7 +66,9 @@ export async function POST(request: Request) {
     // and redirects to the URL provided with the `redirect` parameter:
     {
       label: "Published version",
-      url: `${baseUrl}${url}`,
+      url: `${baseUrl}/api/exit-draft?redirect=${url}&secret=${
+        process.env.NEXT_DATOCMS_PREVIEW_SECRET || ""
+      }`,
     },
 
     // Public URL:
