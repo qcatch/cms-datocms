@@ -52,7 +52,7 @@ export default async function Page({ params }: AppRouteProps) {
   ) : (
     <>
       <div className="container my-24 mx-auto md:px-6">
-        {data.page?.content?.map((item) => {
+        {data.page?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item.__typename) {
             case "CardpriceblockRecord":

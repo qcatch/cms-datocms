@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "DatoCMS Demo",
 };
 
-function getPageRequest({ includeDrafts }) {
+function getPageRequest({ includeDrafts }: { includeDrafts: boolean }) {
   return { query: MAIN_MENU_QUERY, includeDrafts };
 }
 

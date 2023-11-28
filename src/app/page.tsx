@@ -10,6 +10,7 @@ import React from "react";
 import CardBlock from "@/components/CardBlock";
 import { HOME_QUERY } from "@/lib/datacms.query";
 
+// @ts-ignore
 function getPageRequest({ includeDrafts }) {
   return { query: HOME_QUERY, includeDrafts };
 }
@@ -34,7 +35,7 @@ export default async function Home() {
   ) : (
     <>
       <div className="space-y-20">
-        {data.home?.content?.map((item) => {
+        {data.home?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item._modelApiKey) {
             case "hero":

@@ -3,12 +3,12 @@ import { StructuredText, useQuerySubscription } from "react-datocms";
 import Hero from "@/components/Hero";
 import React from "react";
 
-export function RealtimeHome({ subscription }) {
+export function RealtimeHome({ subscription }: { subscription: any }) {
   const { data, error, status } = useQuerySubscription(subscription);
   // console.log(data, error, status);
   return (
     <div className="space-y-20">
-      {data.home?.content?.map((item) => {
+      {data.home?.content?.map((item: any) => {
         // console.log(item.__typename);
         switch (item._modelApiKey) {
           case "hero":
