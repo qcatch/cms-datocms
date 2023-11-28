@@ -47,9 +47,17 @@ export default async function Home() {
                 </div>
               );
             case "cardblock":
-              return <CardBlock key={item.key} {...item} />;
+              return (
+                <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
+                  <CardBlock key={item.key} {...item} />
+                </div>
+              );
             case "textimage":
-              return <TextImage key={item.key} {...item} />;
+              return (
+                <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
+                  <TextImage key={item.key} {...item} />
+                </div>
+              );
             default:
               return null;
           }
