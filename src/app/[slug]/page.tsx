@@ -10,6 +10,7 @@ import { RealtimePage } from "@/components/PagePreview";
 import Hero from "@/components/Hero";
 import React from "react";
 import { StructuredText } from "react-datocms";
+import CardBlock from "@/components/CardBlock";
 
 export async function generateMetadata({ params }: AppRouteProps) {
   const { isEnabled } = draftMode();
@@ -55,8 +56,8 @@ export default async function Page({ params }: AppRouteProps) {
         {data.page?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item.__typename) {
-            case "CardpriceblockRecord":
-              return <PriceCardBlock key={item._key} {...item} />;
+            case "CardRecord":
+              return <CardBlock key={item._key} {...item} />;
             case "FaqblockRecord":
               return <FAQBlock key={item.key} {...item} />;
             case "TextimageRecord":
