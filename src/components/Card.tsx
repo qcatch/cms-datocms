@@ -4,7 +4,9 @@ import { Image } from "react-datocms";
 export interface CardProps {
   id: string;
   name: string;
-  image: string;
+  image: {
+    responsiveImage: any;
+  };
   quote: string;
   job: string;
 }

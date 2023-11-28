@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     await Promise.all([installWebPreviewsPlugin(client)]);
 
     return NextResponse.json({ success: true }, corsInitOptions);
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
 
     return NextResponse.json(

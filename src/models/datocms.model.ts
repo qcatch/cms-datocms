@@ -27,7 +27,9 @@ export interface HeroBlock {
   _type?: string;
   title: string;
   buttons: Button[];
-  image: ImagePropTypes;
+  image: {
+    responsiveImage: any;
+  };
 }
 
 export interface Button {
