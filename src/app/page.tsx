@@ -48,6 +48,8 @@ export default async function Home() {
               );
             case "cardblock":
               return <CardBlock key={item.key} {...item} />;
+            case "textimage":
+              return <TextImage key={item.key} {...item} />;
             default:
               return null;
           }
