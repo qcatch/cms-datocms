@@ -100,22 +100,6 @@ export const HOME_QUERY = `query Home {
 export const PAGE_QUERY = `query Page($slug: String) {
   page(filter: {slug: {eq: $slug}}) {
     content {
-      ... on CardpriceblockRecord {
-        __typename
-        id
-        cards {
-          button {
-            id
-            link
-            title
-          }
-          options
-          price
-          term
-          title
-        }
-        title
-      }
       ... on FaqblockRecord {
         __typename
         id
