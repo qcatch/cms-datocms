@@ -56,7 +56,7 @@ export default async function Page({ params }: AppRouteProps) {
         {data.page?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item.__typename) {
-            case "CardRecord":
+            case "CardblockRecord":
               return <CardBlock key={item._key} {...item} />;
             case "FaqblockRecord":
               return <FAQBlock key={item.key} {...item} />;

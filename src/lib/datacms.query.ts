@@ -162,23 +162,27 @@ export const PAGE_QUERY = `query Page($slug: String) {
           value
         }
       }
-      ... on CardRecord {
-        __typename
+      ... on CardblockRecord {
         id
-        name
-        image {
-          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
-            sizes
-            src
-            width
-            height
-            alt
-            title
-            base64
+        price
+        title
+        cards {
+          quote
+          name
+          job
+          id
+          image {
+            responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
+              sizes
+              src
+              width
+              height
+              alt
+              title
+              base64
+            }
           }
         }
-        quote
-        job
       }
     }
     title
