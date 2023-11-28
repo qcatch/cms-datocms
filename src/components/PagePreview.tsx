@@ -5,6 +5,7 @@ import PriceCardBlock from "@/components/PriceCardBlock";
 import FAQBlock from "@/components/FAQBlock";
 import TextImage from "@/components/TextImage";
 import React from "react";
+import CardBlock from "@/components/CardBlock";
 
 export function RealtimePage({ subscription }: { subscription: any }) {
   const { data, error, status } = useQuerySubscription(subscription);
@@ -14,8 +15,8 @@ export function RealtimePage({ subscription }: { subscription: any }) {
       {data.page?.content?.map((item: any) => {
         // console.log(item.__typename);
         switch (item.__typename) {
-          case "CardpriceblockRecord":
-            return <PriceCardBlock key={item._key} {...item} />;
+          case "CardRecord":
+            return <CardBlock key={item._key} {...item} />;
           case "FaqblockRecord":
             return <FAQBlock key={item.key} {...item} />;
           case "TextimageRecord":

@@ -2,6 +2,8 @@
 import { StructuredText, useQuerySubscription } from "react-datocms";
 import Hero from "@/components/Hero";
 import React from "react";
+import CardBlock from "@/components/CardBlock";
+import TextImage from "@/components/TextImage";
 
 export function RealtimeHome({ subscription }: { subscription: any }) {
   const { data, error, status } = useQuerySubscription(subscription);
@@ -17,6 +19,18 @@ export function RealtimeHome({ subscription }: { subscription: any }) {
             return (
               <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
                 <StructuredText data={item?.content?.value} />
+              </div>
+            );
+          case "cardblock":
+            return (
+              <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
+                <CardBlock key={item.key} {...item} />
+              </div>
+            );
+          case "textimage":
+            return (
+              <div className="container mx-auto bg-neutral-50 px-6 py-12 text-center md:px-12 lg:text-left my-10">
+                <TextImage key={item.key} {...item} />
               </div>
             );
           default:
