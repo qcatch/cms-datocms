@@ -68,8 +68,31 @@ export const HOME_QUERY = `query Home {
           }
         }
       }
+      ... on TextimageRecord {
+        id
+        _modelApiKey        
+        image {
+          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
+            width
+            webpSrcSet
+            srcSet
+            src
+            title
+            sizes
+            height
+            bgColor
+            base64
+            aspectRatio
+            alt
+          }
+        }
+        content {
+          value
+          blocks
+          links
+        }
+      }
     }
-    title
     id
   }
 }`;
