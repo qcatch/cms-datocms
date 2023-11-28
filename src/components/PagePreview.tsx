@@ -6,12 +6,12 @@ import FAQBlock from "@/components/FAQBlock";
 import TextImage from "@/components/TextImage";
 import React from "react";
 
-export function RealtimePage({ subscription }) {
+export function RealtimePage({ subscription }: { subscription: any }) {
   const { data, error, status } = useQuerySubscription(subscription);
   // console.log(data, error, status);
   return (
     <div className="container my-24 mx-auto md:px-6">
-      {data.page?.content?.map((item) => {
+      {data.page?.content?.map((item: any) => {
         // console.log(item.__typename);
         switch (item.__typename) {
           case "CardpriceblockRecord":
