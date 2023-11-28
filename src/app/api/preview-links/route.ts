@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { SchemaTypes } from "@datocms/cma-client-node";
+import { cookies } from "next/headers";
 
 const cors = {
   headers: {
@@ -8,7 +10,13 @@ const cors = {
   },
 };
 
-function generatePreviewUrl(item, itemType, locale: string) {
+function generatePreviewUrl(
+  item: SchemaTypes.Item,
+  itemType: SchemaTypes.ItemType,
+  locale: string,
+) {
+  // console.log("APIKEY:", itemType.attributes.api_key);
+  // console.log("SLUG:", item.attributes.slug);
   switch (itemType.attributes.api_key) {
     case "home":
       return "/";
@@ -20,7 +28,7 @@ function generatePreviewUrl(item, itemType, locale: string) {
 }
 
 export async function OPTIONS() {
-  return new Response("OK", cors);
+  return NextResponse.json({ success: true }, cors);
 }
 
 export async function POST(request: Request) {
@@ -32,6 +40,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ previewLinks: [] }, cors);
   }
 
+  const cookieStore = cookies();
+  const cookie = cookieStore.get("__prerender_bypass")!;
+  cookies().set({
+    name: "__prerender_bypass",
+    value: cookie?.value,
+    httpOnly: true,
+    path: "/",
+    secure: true,
+    sameSite: "none",
+  });
+
   const baseUrl = process.env.VERCEL_URL
     ? // Vercel auto-populates this environment variable
       `https://${process.env.VERCEL_URL}`
@@ -39,18 +58,15 @@ export async function POST(request: Request) {
       process.env.URL;
 
   const previewLinks = [
-    // Public URL:
+    // This requires an API route on your project that starts Next.js Preview Mode
+    // and redirects to the URL provided with the `redirect` parameter:
     {
       label: "Published version",
       url: `${baseUrl}${url}`,
     },
-    // This requires an API route on your project that starts Next.js Preview Mode
-    // and redirects to the URL provided with the `redirect` parameter:
-    {
-      label: "Draft version",
-      url: `${baseUrl}/api/draft?redirect=${url}&secret=${process.env.PREVIEW_MODE_SECRET}`,
-    },
+
+    // Public URL:
   ];
 
-  return NextResponse.json({ previewLinks: previewLinks }, cors);
+  return NextResponse.json({ previewLinks }, cors);
 }

@@ -18,9 +18,9 @@ const Header = ({ data }: { data: any[] }) => {
                     <li className="mb-4 lg:mb-0 lg:pr-2" key={i}>
                       <Link
                         className={`block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90`}
-                        href={link.slug || "/"}
+                        href={link?.slug || "/"}
                       >
-                        {link.title}
+                        {link?.title}
                       </Link>
                     </li>
                   );

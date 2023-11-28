@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: AppRouteProps) {
   const { page } = await performRequest(pageRequest);
 
   return {
-    title: `${page.title}: ${metadata.title}`,
+    title: `${page?.title}: ${metadata.title}`,
   };
 }
 

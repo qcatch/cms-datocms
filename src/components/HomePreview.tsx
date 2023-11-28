@@ -5,7 +5,7 @@ import React from "react";
 
 export function RealtimeHome({ subscription }) {
   const { data, error, status } = useQuerySubscription(subscription);
-  console.log(data, error, status);
+  // console.log(data, error, status);
   return (
     <div className="space-y-20">
       {data.home?.content?.map((item) => {

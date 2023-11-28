@@ -17,7 +17,7 @@ const Hero: React.FC<HeroBlock> = ({ title, buttons, image }) => {
               )}
               {buttons?.length &&
                 buttons?.map((button, index) => {
-                  console.log(button);
+                  // console.log(button);
                   return (
                     <Link
                       key={button.title}

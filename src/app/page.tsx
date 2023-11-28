@@ -7,51 +7,11 @@ import FAQBlock from "@/components/FAQBlock";
 import TextImage from "@/components/TextImage";
 import { StructuredText } from "react-datocms";
 import React from "react";
-
-const PAGE_CONTENT_QUERY = `query Home {
-  home {
-    content {
-      ... on HeroRecord {
-      _modelApiKey
-        id
-        _createdAt
-        image {
-          responsiveImage(imgixParams: { fit: crop, w: 1200, h: 1200 }) {
-            width
-            webpSrcSet
-            srcSet
-            src
-            title
-            sizes
-            height
-            bgColor
-            base64
-            aspectRatio
-            alt
-          }
-          title
-        }
-        buttons {
-          title
-          link
-        }
-        title
-      }
-      ... on RichtextBlockRecord {
-      _modelApiKey
-        id
-        content {
-          value
-        }
-      }
-    }
-    title
-    id
-  }
-}`;
+import CardBlock from "@/components/CardBlock";
+import { HOME_QUERY } from "@/lib/datacms.query";
 
 function getPageRequest({ includeDrafts }) {
-  return { query: PAGE_CONTENT_QUERY, includeDrafts };
+  return { query: HOME_QUERY, includeDrafts };
 }
 
 export default async function Home() {
@@ -59,7 +19,7 @@ export default async function Home() {
 
   const pageRequest = getPageRequest({ includeDrafts: isEnabled });
   const data = await performRequest(pageRequest);
-  console.log(data);
+  // console.log(data);
   return isEnabled ? (
     <>
       <RealtimeHome
@@ -85,6 +45,8 @@ export default async function Home() {
                   <StructuredText data={item?.content?.value} />
                 </div>
               );
+            case "cardblock":
+              return <CardBlock key={item.key} {...item} />;
             default:
               return null;
           }

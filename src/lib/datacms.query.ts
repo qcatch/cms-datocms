@@ -5,6 +5,75 @@ query Pages {
   }
 }`;
 
+export const HOME_QUERY = `query Home {
+  home {
+    content {
+      ... on HeroRecord {
+        _modelApiKey
+        id
+        _createdAt
+        image {
+          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
+            width
+            webpSrcSet
+            srcSet
+            src
+            title
+            sizes
+            height
+            bgColor
+            base64
+            aspectRatio
+            alt
+          }
+          title
+        }
+        buttons {
+          title
+          link
+        }
+        title
+      }
+      ... on RichtextBlockRecord {
+        _modelApiKey
+        id
+        content {
+          value
+        }
+      }
+      ... on CardblockRecord {
+        id
+        _modelApiKey
+        price
+        title
+        cards {
+          id
+          job
+          name
+          quote
+          image {
+            responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
+              alt
+              sizes
+              src
+              srcSet
+              title
+              webpSrcSet
+              width
+              height
+              bgColor
+              base64
+              aspectRatio
+            }
+          }
+        }
+      }
+    }
+    title
+    id
+  }
+}`;
+
 export const PAGE_QUERY = `query Page($slug: String) {
   page(filter: {slug: {eq: $slug}}) {
     content {
@@ -44,7 +113,7 @@ export const PAGE_QUERY = `query Page($slug: String) {
       ... on HeroRecord {
         __typename
         image {
-          responsiveImage(imgixParams: { fit: crop, w: 1200, h: 1200 }) {
+          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
             sizes
             src
             width
@@ -68,7 +137,7 @@ export const PAGE_QUERY = `query Page($slug: String) {
         }
         id
         image {
-          responsiveImage(imgixParams: { fit: crop, w: 1200, h: 1200 }) {
+          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
             sizes
             src
             width
@@ -85,6 +154,24 @@ export const PAGE_QUERY = `query Page($slug: String) {
         content {
           value
         }
+      }
+      ... on CardRecord {
+        __typename
+        id
+        name
+        image {
+          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
+            sizes
+            src
+            width
+            height
+            alt
+            title
+            base64
+          }
+        }
+        quote
+        job
       }
     }
     title
