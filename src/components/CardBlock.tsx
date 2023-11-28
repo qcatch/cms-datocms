@@ -18,7 +18,7 @@ const CardBlock: React.FC<CardBlockProps> = ({ title, cards, price }) => {
         </div>
 
         <div className="grid max-w-xl grid-cols-1 mx-auto mt-8 text-center lg:max-w-full sm:mt-12 lg:mt-20 lg:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-6">
-          {cards.map((item) => (
+          {cards?.map((item) => (
             <div className="mb-6 lg:mb-0" key={item.id}>
               <Card {...item} />
             </div>

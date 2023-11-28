@@ -13,7 +13,7 @@ const Header = ({ data }: { data: any[] }) => {
           <div className="flex w-full flex-wrap items-center justify-between px-3">
             <div className="grow basis-[100%] items-center lg:!flex lg:basis-auto">
               <ul className="mr-auto flex flex-col lg:flex-row">
-                {navigation.map(({ link }, i) => {
+                {navigation?.map(({ link }, i) => {
                   return (
                     <li className="mb-4 lg:mb-0 lg:pr-2" key={i}>
                       <Link

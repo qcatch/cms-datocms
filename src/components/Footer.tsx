@@ -28,7 +28,7 @@ const LinkGroup = ({
       <h5 className="mb-2.5 font-bold uppercase text-neutral-800 ">{title}</h5>
 
       <ul className="mb-0 list-none">
-        {links.map((link, index) => (
+        {links?.map((link, index) => (
           <LinkItem url={link.url} key={index} title={link.title} />
         ))}
       </ul>
@@ -43,7 +43,7 @@ const Footer = ({ links, tagline }: { links: any[]; tagline: any }) => {
       <footer className="flex flex-col items-center bg-neutral-100 text-center lg:text-left">
         <div className="container p-6">
           <div className="grid place-items-top md:grid-cols-2 lg:grid-cols-4">
-            {links.map((group, index) => (
+            {links?.map((group, index) => (
               <LinkGroup
                 key={group.title}
                 title={group.title}

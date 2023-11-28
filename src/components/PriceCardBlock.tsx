@@ -14,7 +14,7 @@ const PriceCardBlock: React.FC<PriceCardBlockProps> = ({ title, cards }) => {
           <h2 className="mb-12 text-center text-3xl font-bold">{title}</h2>
         )}
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-x-12">
-          {cards.map((item) => (
+          {cards?.map((item) => (
             <div className="mb-6 lg:mb-0" key={item._key}>
               <PriceCard {...item} />
             </div>
