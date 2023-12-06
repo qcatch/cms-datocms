@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: AppRouteProps) {
     includeDrafts: isEnabled,
     variables: { slug: params.slug },
   };
-
-  const { page } = await performRequest(pageRequest);
+  const data = await performRequest(pageRequest);
+  const page = data?.page;
 
   return {
     title: `${page?.title}: ${metadata.title}`,
