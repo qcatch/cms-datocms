@@ -9,7 +9,6 @@ import CardBlock from "@/components/CardBlock";
 
 export function RealtimePage({ subscription }: { subscription: any }) {
   const { data, error, status } = useQuerySubscription(subscription);
-  // console.log(data, error, status);
   return (
     <div className="container my-24 mx-auto md:px-6">
       {data.page?.content?.map((item: any) => {
@@ -29,7 +28,6 @@ export function RealtimePage({ subscription }: { subscription: any }) {
                 <StructuredText data={item?.content?.value} />
               </div>
             );
-
           default:
             return null;
         }
