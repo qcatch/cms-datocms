@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = ({ name, image, quote, id }) => {
 
         <blockquote className="mt-7">
           <p className="text-lg text-black">
-            {quote ? <>&quot;{quote}&quot;</> : "&nbsp;"}
+            {quote ? <>&quot;{quote}&quot;</> : <>&nbsp;</>}
           </p>
         </blockquote>
 
