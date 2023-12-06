@@ -35,7 +35,7 @@ export default async function Home() {
   ) : (
     <>
       <div className="space-y-20">
-        {data.home?.content?.map((item: any) => {
+        {data?.home?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item._modelApiKey) {
             case "hero":

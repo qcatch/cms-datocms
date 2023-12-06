@@ -44,7 +44,6 @@ export const HOME_QUERY = `query Home {
       ... on CardblockRecord {
         id
         _modelApiKey
-        price
         title
         cards {
           id
