@@ -32,11 +32,13 @@ const Card: React.FC<CardProps> = ({ name, image, quote, id }) => {
             </svg>
           </div>
         </div>
-        {quote && (
-          <blockquote className="mt-7">
-            <p className="text-lg text-black">&quot;{quote}&quot;</p>
-          </blockquote>
-        )}
+
+        <blockquote className="mt-7">
+          <p className="text-lg text-black">
+            {quote ? <>&quot;{quote}&quot;</> : "&nbsp;"}
+          </p>
+        </blockquote>
+
         <p className="text-base font-semibold tex-tblack mt-9">{name}</p>
       </div>
     </div>
