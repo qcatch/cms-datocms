@@ -38,7 +38,7 @@ export default async function Page({ params }: AppRouteProps) {
   };
 
   const data = await performRequest(pageRequest);
-
+  console.log(data);
   return isEnabled ? (
     <>
       <RealtimePage
