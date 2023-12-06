@@ -163,6 +163,7 @@ export const PAGE_QUERY = `query Page($slug: String) {
         }
       }
       ... on CardblockRecord {
+        __typename
         id
         price
         title
