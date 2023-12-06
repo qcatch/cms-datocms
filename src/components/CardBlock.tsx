@@ -2,19 +2,18 @@ import React from "react";
 import Card, { CardProps } from "@/components/Card";
 
 interface CardBlockProps {
-  title: string;
-  price: string;
+  title?: string;
   cards: CardProps[];
 }
 
-const CardBlock: React.FC<CardBlockProps> = ({ title, cards, price }) => {
+const CardBlock: React.FC<CardBlockProps> = ({ title, cards }) => {
   return (
     <section className="py-10 bg-gray-100 sm:py-16 lg:py-24 mb-5">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {title && (
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold leading-tight text-gray-800 sm:text-4xl lg:text-5xl">
-              {title} <span className="text-blue-600">{price}</span>
+              {title}
             </h2>
           </div>
         )}

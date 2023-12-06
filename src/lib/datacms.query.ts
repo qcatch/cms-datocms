@@ -100,43 +100,6 @@ export const HOME_QUERY = `query Home {
 export const PAGE_QUERY = `query Page($slug: String) {
   page(filter: {slug: {eq: $slug}}) {
     content {
-      ... on FaqblockRecord {
-        __typename
-        id
-        faqs {
-          id
-          question
-          answer {
-            blocks
-            links
-            value
-          }
-        }
-        intro {
-          value
-        }
-        title
-      }
-      ... on HeroRecord {
-        __typename
-        image {
-          responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
-            sizes
-            src
-            width
-            height
-            alt
-            title
-            base64
-          }
-          url
-        }
-        title
-        buttons {
-          link
-          title
-        }
-      }
       ... on TextimageRecord {
         __typename
         content {
@@ -165,7 +128,6 @@ export const PAGE_QUERY = `query Page($slug: String) {
       ... on CardblockRecord {
         __typename
         id
-        price
         title
         cards {
           quote
@@ -181,9 +143,19 @@ export const PAGE_QUERY = `query Page($slug: String) {
               alt
               title
               base64
+              aspectRatio
             }
+            size
+            smartTags
+            tags
+            thumbhash
+            url
+            width
           }
+          _status
         }
+        _status
+        _updatedAt
       }
     }
     title
