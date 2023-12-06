@@ -38,7 +38,7 @@ export default async function Page({ params }: AppRouteProps) {
   };
 
   const data = await performRequest(pageRequest);
-  console.log(data);
+
   return isEnabled ? (
     <>
       <RealtimePage
@@ -53,7 +53,7 @@ export default async function Page({ params }: AppRouteProps) {
   ) : (
     <>
       <div className="container my-24 mx-auto md:px-6">
-        {data.page?.content?.map((item: any) => {
+        {data?.page?.content?.map((item: any) => {
           // console.log(item.__typename);
           switch (item.__typename) {
             case "CardblockRecord":
