@@ -8,10 +8,9 @@ export interface CardProps {
     responsiveImage: any;
   };
   quote?: string;
-  job?: string;
 }
 
-const Card: React.FC<CardProps> = ({ name, image, quote, job, id }) => {
+const Card: React.FC<CardProps> = ({ name, image, quote, id }) => {
   return (
     <div className="overflow-hidden bg-white rounded-md shadow">
       <div className="px-8 py-12">
@@ -39,7 +38,6 @@ const Card: React.FC<CardProps> = ({ name, image, quote, job, id }) => {
           </blockquote>
         )}
         <p className="text-base font-semibold tex-tblack mt-9">{name}</p>
-        {/*<p className="mt-1 text-base text-gray-600">{job} at Microsoft</p>*/}
       </div>
     </div>
   );

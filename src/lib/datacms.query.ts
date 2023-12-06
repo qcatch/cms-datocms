@@ -47,7 +47,6 @@ export const HOME_QUERY = `query Home {
         title
         cards {
           id
-          job
           name
           quote
           image {
@@ -131,7 +130,6 @@ export const PAGE_QUERY = `query Page($slug: String) {
         cards {
           quote
           name
-          job
           id
           image {
             responsiveImage(imgixParams: {fit: crop, w: 1200, h: 1200}) {
