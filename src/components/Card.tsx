@@ -7,8 +7,8 @@ export interface CardProps {
   image: {
     responsiveImage: any;
   };
-  quote: string;
-  job: string;
+  quote?: string;
+  job?: string;
 }
 
 const Card: React.FC<CardProps> = ({ name, image, quote, job, id }) => {
@@ -33,11 +33,13 @@ const Card: React.FC<CardProps> = ({ name, image, quote, job, id }) => {
             </svg>
           </div>
         </div>
-        <blockquote className="mt-7">
-          <p className="text-lg text-black">&quot;{quote}&quot;</p>
-        </blockquote>
+        {quote && (
+          <blockquote className="mt-7">
+            <p className="text-lg text-black">&quot;{quote}&quot;</p>
+          </blockquote>
+        )}
         <p className="text-base font-semibold tex-tblack mt-9">{name}</p>
-        <p className="mt-1 text-base text-gray-600">{job} at Microsoft</p>
+        {/*<p className="mt-1 text-base text-gray-600">{job} at Microsoft</p>*/}
       </div>
     </div>
   );
